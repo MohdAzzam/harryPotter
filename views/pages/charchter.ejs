@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harray Potter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://air-marketing-assets.imgix.net/blog/logo-db/harry-potter-logo/harry-potter-logo-png-1.png?auto=format&fit=max&ixlib=react-9.0.2&h=270&w=576" width="150" height="30"
+                class="d-inline-block align-top" alt="">
+            
+        </a>
+    </nav>
+    <div class="container">
+        <a href="/" class="btn btn-primary mt-4">Home</a>
+        <div class="row">
+
+            <% if(count<=0){%>
+                <h4>You dont add any Char go back and add one <a href="/" class="btn btn-primary">Add</a></h4>
+                <%}else{%>
+            <% data.forEach(item=>{ %>
+                <div class="col-lg-4 col-sm-12 col-md-6 mt-4 mb-4 ">
+                    <div class="card" style="width: 18rem;">
+                        <img src="<%=item.image%>" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">
+                               Name : <%= item.name %>
+                            </h5>
+                            <p class="card-text">
+                              Species : <%= item.species%>
+                            </p>
+                            <p class="card-text">
+                                Alive : <%= item.alive? 'Yes' : 'No' %>
+                             </p>
+                             <p class="card-text">
+                                Gender : <%= item.gender %>
+                             </p>
+                             <p class="card-text">
+                                House : <%= item.house %>
+                             </p>
+                             <p class="card-text">
+                                patronus : <%= item.patronus %>
+                             </p>
+                             <a href="/update/<%=item.id%>" class="btn btn-success mb-2">Update</a>  
+                        <form action="/delete/<%=item.id%>?_method=DELETE" method="post">
+                            <button class="btn btn-danger">delete</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <%})}%>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
