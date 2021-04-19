@@ -21,7 +21,7 @@ app.get('/',(req,res)=>{
     .then(result=>{
         res.render('pages/index',{data:result.body})
     })
-    .catch(err=>console.log('API ERROR',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 })
 
 app.post('/myCharacters',(req,res)=>{
@@ -31,7 +31,7 @@ app.post('/myCharacters',(req,res)=>{
     .then(()=>{
         res.redirect('/mychar');
     })
-    .catch(err=>console.log('ERROR while insert',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 
 })
 
@@ -41,7 +41,7 @@ app.get('/mychar',(req,res)=>{
     .then(result=>{
         res.render('pages/charchter',{data:result.rows,count:result.rowCount})
     })
-    .catch(err=>console.log('error while retrive the data',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 })
 
 
@@ -52,7 +52,7 @@ app.get('/update/:id',(req,res)=>{
     .then(result=>{
         res.render('pages/update',{data:result.rows})
     })
-    .catch(err=>console.log('error while retrive the data',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 })
 
 app.put('/update/:id',(req,res)=>{
@@ -61,7 +61,7 @@ app.put('/update/:id',(req,res)=>{
     .then(result=>{
         res.redirect('/mychar');
     })
-    .catch(err=>console.log('error while update',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 })
 
 app.delete('/delete/:id',(req,res)=>{
@@ -70,7 +70,7 @@ app.delete('/delete/:id',(req,res)=>{
     .then(()=>{
         res.redirect('/mychar')
     })
-    .catch(err=>console.log('error while delete',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 })
 
 app.get('/addYour',(req,res)=>{
@@ -84,7 +84,7 @@ app.post('/addYour',(req,res)=>{
     .then(()=>{
         res.redirect('/mychar');
     })
-    .catch(err=>console.log('ERROR while insert',err))
+    .catch(err=>res.render('pages/error',{err:err}))
 
 })
 /**
